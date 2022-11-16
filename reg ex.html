@@ -11,7 +11,7 @@
 			var mail=document.getElementById("mail").value;
             var firstNameCheck=/^[a-zA-Z ]+$/
             var mobileCheck=/^[0-9]{10}$/
-            var mailCheck=/^[]
+            var mailCheck=/^[a-zA-Z#.0-9]+@[a-z]+\.[a-z]{2,3}$/
              if(firstName==""||firstName.length<3){
 				alert("please check your name")
 				return false
@@ -20,12 +20,20 @@
 				alert("please enter your name")
 				return false
 			}
-			if(!firstName.match (firstNameCheck)){
+			if(!firstName.match(firstNameCheck)){
 				alert("Name must carry characters")
 				return false
 			}
 		if(!mobile.match(mobileCheck)){
-			alert("Number must be 10 digits")
+			alert("Mobile number must be 10 digits")
+			return false
+		}
+		if(mail==""){
+			alert("Please check your email")
+			return false
+		}
+		if(!mail.match(mailCheck)){
+			alert("email id is not valid")
 			return false
 		}
 		return true
@@ -35,8 +43,8 @@
 <body>
 	<form onsubmit="return validate()">
 		<p><input placeholder="Enter your name"id="firstname"/></p>
-		<p><input placeholder="Enter your Mobilenumber"id="mobile"/></p>
-		<p><input placeholder="Enter your email"id="mail"/></p>
+		<p><input placeholder="Enter your Mobile number"id="mobile"/></p>
+		<p><input placeholder="Enter your email id"id="mail"/></p>
 		<button>Submit</button>
 	</form>
 </body>
